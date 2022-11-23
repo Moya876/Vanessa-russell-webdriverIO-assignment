@@ -18,19 +18,25 @@ const Page = require('./page');
     get productItem () {
         return $(".product-item-info");
     }
-    
-    // get addToCartBtn () {
-    //     return $("#product-addtocart-button.action.primary.tocart");
-    // }
-    // get addToCartBtn () {
-    //     return $("#product-addtocart-button");
-    // }
+    get successMsg () {
+        return $(".message-success.success.message");
+    }
+
+    get shoppingCartLink () {
+        return $('.message-success.success.message a');
+    } 
+   
+    get addToCartBtn () {
+        return $("#product-addtocart-button");
+    }
 
     async addToCart() {
         await this.dropDownOption.click();
         await this.productOption.click();
         await this.productItem.click();
-        await this.addToCartBtn.click()
+        await this.addToCartBtn.click();
+        await this.successMsg.waitForDisplayed();
+        await this.shoppingCartLink.click();
  }
 
 open () {

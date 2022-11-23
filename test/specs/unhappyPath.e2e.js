@@ -3,7 +3,7 @@ const signUpPage = require('..//pageobjects/signUp.page');
 const signUpData = require('../data/signupData');
 
 //Unhappy path tests for which a user could misuse the product flow
-describe.skip('unhappy path test', () => {
+describe('unhappy path test', () => {
     //user should not be able to login with a correct email address but incorrect password
     
     it('should not be able to login with invalid credentials', async () => {
@@ -19,6 +19,7 @@ describe.skip('unhappy path test', () => {
         await signUpPage.open('signUpPage');
         await signUpPage.signup(signUpData[i].firstName, signUpData[i].lastName, signUpData[i].email, signUpData[i].password, signUpData[i].passwordConfirm);
         expect (await $(`.message-error.error.message`)).toHaveTextContaining('There is already an account with this email address');
+        //console.log();
     });
     
 });

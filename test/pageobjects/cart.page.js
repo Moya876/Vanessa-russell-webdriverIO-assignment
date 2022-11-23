@@ -4,30 +4,34 @@ const Page = require('./page');
  * sub page containing specific selectors and methods for a specific page
  */
 
- class CartPage extends Page {
+class CartPage extends Page {
     /**
      * define selectors using getter methods
      */
-     get cartIcon () {
+    get cartIconBtn() {
         return $(".action.showcart");
     }
-    get checkoutBtn () {
+
+    get cartIconMenu() {
+        return $(".action.showcart.active");
+    }
+    get checkoutBtn() {
         return $("#top-cart-btn-checkout");
     }
-    get proceedBtn () {
+    get proceedBtn() {
         return $("button[data-role='proceed-to-checkout']");
     }
-
-    async CartPage() {
-        await this.cartIcon.click();
+     async proceedToCheckout() {
+        await this.cartIconBtn.click();
+        await this.cartIconMenu.waitForDisplayed();
         await this.checkoutBtn.click();
-        await this.proceedBtn.click();
+        //await this.proceedBtn.click();
 
-}
+    }
 
-open () {
-    return super.open('checkout/cart');
-}
+    open() {
+        return super.open('checkout/cart');
+    }
 }
 
 module.exports = new CartPage();

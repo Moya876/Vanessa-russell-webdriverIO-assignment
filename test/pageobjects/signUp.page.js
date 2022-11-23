@@ -21,10 +21,12 @@ class signUpPage extends Page {
         return $('#password-confirmation');
     }
 
-    get signUpSubmit () {
-        return $('.primary');
+    get createActBtn () {
+        return $("a[class='action primary'] span");
     }
-
+    get accountBtn () {
+        return $("button[title='Create an Account']");
+    }
     async signup (firstname, lastname, email, password, passwordConfirm) {
 
             await this.inputFirstname.setValue(firstname);
@@ -32,7 +34,7 @@ class signUpPage extends Page {
             await this.inputEmail.setValue(email);
             await this.inputPassword.setValue(password);
             await this.inputPasswordConfirmation.setValue(passwordConfirm);
-            await this.signUpSubmit.click();
+            await this.accountBtn.click();
     }
 
     /**

@@ -17,12 +17,8 @@ class LoginPage extends Page {
 
     get btnSignIn () {
         return $("button[class='action login primary']");
-    }
-
-    // get invalidUsername () {
-    //     return $('.flash.error');
-    // }
-
+    } 
+    
     /**
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password
